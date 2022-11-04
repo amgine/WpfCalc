@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="WpfCalc.ModeSelectorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="91" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="91" />
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <Style TargetType="{x:Type RadioButton}">
+                <Setter Property="Margin" Value="0,6,0,0" />
+                <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            </Style>
+            <Style TargetType="{x:Type TextBlock}">
+                <Setter Property="FontSize" Value="11" />
+                <Setter Property="Foreground" Value="#FF1E395B" />
+            </Style>
+        </Grid.Resources>
+        <Border Grid.Row="0"
+                Style="{StaticResource OuterBorderStyle}"
+                BorderBrush="#FF8696AA">
+            <StackPanel Margin="7,3,0,0">
+                <RadioButton IsChecked="{Binding IsHexNumberNotation}">
+                    <TextBlock Text="Hex" />
+                </RadioButton>
+                <RadioButton IsChecked="{Binding IsDecNumberNotation}">
+                    <TextBlock Text="Dec" />
+                </RadioButton>
+                <RadioButton IsChecked="{Binding IsOctNumberNotation}">
+                    <TextBlock Text="Oct" />
+                </RadioButton>
+                <RadioButton IsChecked="{Binding IsBinNumberNotation}">
+                    <TextBlock Text="Bin" />
+                </RadioButton>
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="2"
+                Style="{StaticResource OuterBorderStyle}"
+                BorderBrush="#FF8696AA">
+            <StackPanel Margin="7,3,0,0">
+                <RadioButton IsChecked="{Binding Is8BytesMode}">
+                    <TextBlock Text="8 bytes" />
+                </RadioButton>
+                <RadioButton IsChecked="{Binding Is4BytesMode}">
+                    <TextBlock Text="4 bytes" />
+                </RadioButton>
+                <RadioButton IsChecked="{Binding Is2BytesMode}">
+                    <TextBlock Text="2 bytes" />
+                </RadioButton>
+                <RadioButton IsChecked="{Binding Is1ByteMode}">
+                    <TextBlock Text="1 byte" />
+                </RadioButton>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

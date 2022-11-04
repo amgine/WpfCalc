@@ -1,0 +1,132 @@
+﻿<UserControl x:Class="WpfCalc.ProgrammerSpecificKeyPad"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:WpfCalc">
+    <Grid>
+        <Grid.Resources>
+            <GridLength x:Key="ButtonSpacing">5</GridLength>
+            <GridLength x:Key="ButtonWidth">34</GridLength>
+            <GridLength x:Key="ButtonHeight">27</GridLength>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{StaticResource ButtonWidth}" />
+            <ColumnDefinition Width="{StaticResource ButtonSpacing}" />
+            <ColumnDefinition Width="{StaticResource ButtonWidth}" />
+            <ColumnDefinition Width="{StaticResource ButtonSpacing}" />
+            <ColumnDefinition Width="{StaticResource ButtonWidth}" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{StaticResource ButtonHeight}" />
+            <RowDefinition Height="{StaticResource ButtonSpacing}" />
+            <RowDefinition Height="{StaticResource ButtonHeight}" />
+            <RowDefinition Height="{StaticResource ButtonSpacing}" />
+            <RowDefinition Height="{StaticResource ButtonHeight}" />
+            <RowDefinition Height="{StaticResource ButtonSpacing}" />
+            <RowDefinition Height="{StaticResource ButtonHeight}" />
+            <RowDefinition Height="{StaticResource ButtonSpacing}" />
+            <RowDefinition Height="{StaticResource ButtonHeight}" />
+            <RowDefinition Height="{StaticResource ButtonSpacing}" />
+            <RowDefinition Height="{StaticResource ButtonHeight}" />
+        </Grid.RowDefinitions>
+        <!-- left 2 columns -->
+        <Border Grid.Row="0" Grid.Column="0"
+                Style="{StaticResource OuterBorderStyle}"
+                BorderBrush="#FF8696AA">
+            <TextBlock Text="{Binding BraceLevelAsString}" />
+        </Border>
+        <Button Grid.Row="0"  Grid.Column="2"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding ModCommand}">
+            <TextBlock Text="Mod" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="2"  Grid.Column="0"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding LeftBraceCommand}">
+            <TextBlock Text="(" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="2"  Grid.Column="2"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding RightBraceCommand}">
+            <TextBlock Text=")" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="4"  Grid.Column="0"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding RoLCommand}">
+            <TextBlock Text="RoL" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="4"  Grid.Column="2"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding RoRCommand}">
+            <TextBlock Text="RoR" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="6"  Grid.Column="0"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding OrCommand}">
+            <TextBlock Text="Or" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="6"  Grid.Column="2"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding XorCommand}">
+            <TextBlock Text="Xor" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="8"  Grid.Column="0"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding LshCommand}">
+            <TextBlock Text="Lsh" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="8"  Grid.Column="2"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding RshCommand}">
+            <TextBlock Text="Rsh" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="10" Grid.Column="0"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding NotCommand}">
+            <TextBlock Text="Not" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="10" Grid.Column="2"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding AndCommand}">
+            <TextBlock Text="And" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <!-- hex digits -->
+        <Button x:Name="btnHexA" Grid.Row="0"  Grid.Column="4"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding AppendDigitCommand}"
+                CommandParameter="{local:Digit 'A'}">
+            <TextBlock Text="A" Style="{StaticResource DigitButtonText}" />
+        </Button>
+        <Button Grid.Row="2" Grid.Column="4"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding AppendDigitCommand}"
+                CommandParameter="{local:Digit 'B'}">
+            <TextBlock Text="B" Style="{StaticResource DigitButtonText}" />
+        </Button>
+        <Button Grid.Row="4" Grid.Column="4"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding AppendDigitCommand}"
+                CommandParameter="{local:Digit 'C'}">
+            <TextBlock Text="C" Style="{StaticResource DigitButtonText}" />
+        </Button>
+        <Button Grid.Row="6" Grid.Column="4"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding AppendDigitCommand}"
+                CommandParameter="{local:Digit 'D'}">
+            <TextBlock Text="D" Style="{StaticResource DigitButtonText}" />
+        </Button>
+        <Button Grid.Row="8" Grid.Column="4"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding AppendDigitCommand}"
+                CommandParameter="{local:Digit 'E'}">
+            <TextBlock Text="E" Style="{StaticResource DigitButtonText}" />
+        </Button>
+        <Button Grid.Row="10" Grid.Column="4"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding AppendDigitCommand}"
+                CommandParameter="{local:Digit 'F'}">
+            <TextBlock Text="F" Style="{StaticResource DigitButtonText}" />
+        </Button>
+    </Grid>
+</UserControl>

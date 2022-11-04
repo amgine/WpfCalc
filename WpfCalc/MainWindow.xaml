@@ -1,0 +1,179 @@
+﻿<Window x:Class="WpfCalc.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:WpfCalc"
+
+        Title="Calculator"
+        Icon="app.ico"
+        
+        SizeToContent="WidthAndHeight"
+        ResizeMode="CanMinimize"
+        WindowStyle="SingleBorderWindow"
+        ShowInTaskbar="True"
+        
+        UseLayoutRounding="True"
+        SnapsToDevicePixels="True"
+        TextOptions.TextFormattingMode="Display">
+    <Window.DataContext>
+        <local:MainViewModel />
+    </Window.DataContext>
+    <Window.InputBindings>
+        <KeyBinding Modifiers="Alt" Key="D1"
+                    Command="{Binding SetCalculatorTypeCommand}"
+                    CommandParameter="{x:Static local:CalculatorType.Normal}" />
+        <KeyBinding Modifiers="Alt" Key="D2"
+                    Command="{Binding SetCalculatorTypeCommand}"
+                    CommandParameter="{x:Static local:CalculatorType.Engineer}" />
+        <KeyBinding Modifiers="Alt" Key="D3"
+                    Command="{Binding SetCalculatorTypeCommand}"
+                    CommandParameter="{x:Static local:CalculatorType.Programmer}" />
+        <KeyBinding Modifiers="Alt" Key="D4"
+                    Command="{Binding SetCalculatorTypeCommand}"
+                    CommandParameter="{x:Static local:CalculatorType.Statistics}" />
+        <KeyBinding Key="Backspace" Command="{Binding CurrentView.EraseLastDigitCommand}" />
+        <KeyBinding Key="Delete"    Command="{Binding CurrentView.ResetCommand}" />
+        <KeyBinding Key="Escape"    Command="{Binding CurrentView.ResetCommand}" />
+        <KeyBinding Key="D0"        Command="{Binding CurrentView.AppendDigitCommand}" CommandParameter="{local:Digit '0'}" />
+        <KeyBinding Key="NumPad0"   Command="{Binding CurrentView.AppendDigitCommand}" CommandParameter="{local:Digit '0'}" />
+        <KeyBinding Key="D1"        Command="{Binding CurrentView.AppendDigitCommand}" CommandParameter="{local:Digit '1'}" />
+        <KeyBinding Key="NumPad1"   Command="{Binding CurrentView.AppendDigitCommand}" CommandParameter="{local:Digit '1'}" />
+        <KeyBinding Key="D2"        Command="{Binding CurrentView.AppendDigitCommand}" CommandParameter="{local:Digit '2'}" />
+        <KeyBinding Key="NumPad2"   Command="{Binding CurrentView.AppendDigitCommand}" CommandParameter="{local:Digit '2'}" />
+        <KeyBinding Key="D3"        Command="{Binding CurrentView.AppendDigitCommand}" CommandParameter="{local:Digit '3'}" />
+        <KeyBinding Key="NumPad3"   Command="{Binding CurrentView.AppendDigitCommand}" CommandParameter="{local:Digit '3'}" />
+        <KeyBinding Key="D4"        Command="{Binding CurrentView.AppendDigitCommand}" CommandParameter="{local:Digit '4'}" />
+        <KeyBinding Key="NumPad4"   Command="{Binding CurrentView.AppendDigitCommand}" CommandParameter="{local:Digit '4'}" />
+        <KeyBinding Key="D5"        Command="{Binding CurrentView.AppendDigitCommand}" CommandParameter="{local:Digit '5'}" />
+        <KeyBinding Key="NumPad5"   Command="{Binding CurrentView.AppendDigitCommand}" CommandParameter="{local:Digit '5'}" />
+        <KeyBinding Key="D6"        Command="{Binding CurrentView.AppendDigitCommand}" CommandParameter="{local:Digit '6'}" />
+        <KeyBinding Key="NumPad6"   Command="{Binding CurrentView.AppendDigitCommand}" CommandParameter="{local:Digit '6'}" />
+        <KeyBinding Key="D7"        Command="{Binding CurrentView.AppendDigitCommand}" CommandParameter="{local:Digit '7'}" />
+        <KeyBinding Key="NumPad7"   Command="{Binding CurrentView.AppendDigitCommand}" CommandParameter="{local:Digit '7'}" />
+        <KeyBinding Key="D8"        Command="{Binding CurrentView.AppendDigitCommand}" CommandParameter="{local:Digit '8'}" />
+        <KeyBinding Key="NumPad8"   Command="{Binding CurrentView.AppendDigitCommand}" CommandParameter="{local:Digit '8'}" />
+        <KeyBinding Key="D9"        Command="{Binding CurrentView.AppendDigitCommand}" CommandParameter="{local:Digit '9'}" />
+        <KeyBinding Key="NumPad9"   Command="{Binding CurrentView.AppendDigitCommand}" CommandParameter="{local:Digit '9'}" />
+        <KeyBinding Key="A"         Command="{Binding CurrentView.AppendDigitCommand}" CommandParameter="{local:Digit 'A'}" />
+        <KeyBinding Key="B"         Command="{Binding CurrentView.AppendDigitCommand}" CommandParameter="{local:Digit 'B'}" />
+        <KeyBinding Key="C"         Command="{Binding CurrentView.AppendDigitCommand}" CommandParameter="{local:Digit 'C'}" />
+        <KeyBinding Key="D"         Command="{Binding CurrentView.AppendDigitCommand}" CommandParameter="{local:Digit 'D'}" />
+        <KeyBinding Key="E"         Command="{Binding CurrentView.AppendDigitCommand}" CommandParameter="{local:Digit 'E'}" />
+        <KeyBinding Key="F"         Command="{Binding CurrentView.AppendDigitCommand}" CommandParameter="{local:Digit 'F'}" />
+        <KeyBinding Key="OemComma"  Command="{Binding CurrentView.AppendCommaCommand}" />
+        <KeyBinding Key="Decimal"   Command="{Binding CurrentView.AppendCommaCommand}" />
+        <KeyBinding Key="Add"       Command="{Binding CurrentView.AddCommand}" />
+        <KeyBinding Key="Subtract"  Command="{Binding CurrentView.SubtractCommand}" />
+        <KeyBinding Key="Multiply"  Command="{Binding CurrentView.MultiplyCommand}" />
+        <KeyBinding Key="Divide"    Command="{Binding CurrentView.DivideCommand}" />
+        <KeyBinding Key="Return"    Command="{Binding CurrentView.EqualsCommand}" />
+        <KeyBinding Modifiers="Ctrl" Key="V" Command="{Binding CopyCommand}" />
+        <KeyBinding Modifiers="Ctrl" Key="C" Command="{Binding PasteCommand}" />
+    </Window.InputBindings>
+    <Window.Resources>
+        <local:EqualityToBooleanConverter x:Key="EqualityToBooleanConverter" />
+    </Window.Resources>
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Offset="0"    Color="#FFF0F0F0" />
+                <GradientStop Offset="0.23" Color="#FFD9E4F1" />
+                <GradientStop Offset="1"    Color="#FFD9E4F1" />
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0"
+              BorderThickness="0,0,0,1"
+              BorderBrush="#FFB6BCCC">
+            <Menu.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Offset="0"    Color="#FFFEFEFF" />
+                    <GradientStop Offset="0.45" Color="#FFE5EAF5" />
+                    <GradientStop Offset="0.45" Color="#FFD4DBED" />
+                    <GradientStop Offset="1"    Color="#FFE1E6F6" />
+                </LinearGradientBrush>
+            </Menu.Background>
+            <MenuItem>
+                <MenuItem.Header>
+                    <TextBlock Text="View" />
+                </MenuItem.Header>
+                <MenuItem Command="{Binding SetCalculatorTypeCommand}"
+                          IsChecked="{Binding CalculatorType,
+                                              Converter={StaticResource EqualityToBooleanConverter},
+                                              ConverterParameter={x:Static local:CalculatorType.Normal}}">
+                    <MenuItem.CommandParameter>
+                        <local:CalculatorType>Normal</local:CalculatorType>
+                    </MenuItem.CommandParameter>
+                    <MenuItem.Header>
+                        <TextBlock Text="General" />
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Command="{Binding SetCalculatorTypeCommand}"
+                          IsChecked="{Binding CalculatorType,
+                                              Converter={StaticResource EqualityToBooleanConverter},
+                                              ConverterParameter={x:Static local:CalculatorType.Engineer}}">
+                    <MenuItem.CommandParameter>
+                        <local:CalculatorType>Engineer</local:CalculatorType>
+                    </MenuItem.CommandParameter>
+                    <MenuItem.Header>
+                        <TextBlock Text="Engineer" />
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Command="{Binding SetCalculatorTypeCommand}"
+                          IsChecked="{Binding CalculatorType,
+                                              Converter={StaticResource EqualityToBooleanConverter},
+                                              ConverterParameter={x:Static local:CalculatorType.Programmer}}">
+                    <MenuItem.CommandParameter>
+                        <local:CalculatorType>Programmer</local:CalculatorType>
+                    </MenuItem.CommandParameter>
+                    <MenuItem.Header>
+                        <TextBlock Text="Programmer" />
+                    </MenuItem.Header>
+                </MenuItem>
+                <MenuItem Command="{Binding SetCalculatorTypeCommand}"
+                          IsChecked="{Binding CalculatorType,
+                                              Converter={StaticResource EqualityToBooleanConverter},
+                                              ConverterParameter={x:Static local:CalculatorType.Statistics}}">
+                    <MenuItem.CommandParameter>
+                        <local:CalculatorType>Statistics</local:CalculatorType>
+                    </MenuItem.CommandParameter>
+                    <MenuItem.Header>
+                        <TextBlock Text="Statistics" />
+                    </MenuItem.Header>
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Journal" />
+                <MenuItem Header="Group" />
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Copy"  Command="{Binding CopyCommand}" />
+                <MenuItem Header="Paste" Command="{Binding PasteCommand}" />
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="View Help" />
+                <Separator />
+                <MenuItem Header="About" />
+            </MenuItem>
+        </Menu>
+        <ContentControl Grid.Row="1"
+                        Margin="11"
+                        Content="{Binding CurrentView}">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type local:NormalCalcViewModel}">
+                    <local:NormalCalcView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type local:EngineerCalcViewModel}">
+                    <local:EngineerCalcView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type local:ProgrammerCalcViewModel}">
+                    <local:ProgrammerCalcView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type local:StatisticsCalcViewModel}">
+                    <local:StatisticsCalcView />
+                </DataTemplate>
+            </ContentControl.Resources>
+        </ContentControl>
+    </Grid>
+</Window>

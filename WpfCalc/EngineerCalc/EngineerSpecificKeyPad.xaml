@@ -1,0 +1,177 @@
+﻿<UserControl x:Class="WpfCalc.EngineerSpecificKeyPad"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:WpfCalc"
+
+             Width="190" Height="187">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="34" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="34" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="34" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="34" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="34" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="27" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="27" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="27" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="27" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="27" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="27" />
+        </Grid.RowDefinitions>
+        <Border Style="{StaticResource OuterBorderStyle}"
+                BorderBrush="#FF8696AA"
+                Grid.ColumnSpan="9">
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type RadioButton}">
+                        <Setter Property="Margin" Value="2,0" />
+                    </Style>
+                </StackPanel.Resources>
+                <RadioButton Content="Degrees" IsChecked="{Binding IsDegreeMode}" />
+                <RadioButton Content="Radians" IsChecked="{Binding IsRadianMode}" />
+                <RadioButton Content="Grads" IsChecked="{Binding IsGradMode}" />
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="2" Grid.Column="0"
+                Style="{StaticResource OuterBorderStyle}"
+                BorderBrush="#FF8696AA">
+            <TextBlock Text="{Binding BraceLevelAsString}" />
+        </Border>
+        <ToggleButton Grid.Row="2" Grid.Column="2"
+                Style="{StaticResource OperationButtonStyle}"
+                IsChecked="{Binding IsInvertMode}">
+            <TextBlock Text="Inv" Style="{StaticResource OperationButtonText}" />
+        </ToggleButton>
+        <Button Grid.Row="2" Grid.Column="4"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding InCommand}">
+            <TextBlock Text="In" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="2" Grid.Column="6"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding LeftBraceCommand}">
+            <TextBlock Text="(" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="2" Grid.Column="8"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding RightBraceCommand}">
+            <TextBlock Text=")" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="4" Grid.Column="0"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding IntCommand}">
+            <TextBlock Text="Int" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="4" Grid.Column="2"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding SinhCommand}">
+            <TextBlock Text="sinh" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="4" Grid.Column="4"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding SinCommand}">
+            <TextBlock Text="sin" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="4" Grid.Column="6"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding SqrCommand}">
+            <TextBlock Text="x²" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="4" Grid.Column="8"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding FactorialCommand}">
+            <TextBlock Text="n!" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="6" Grid.Column="0"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding DmsCommand}">
+            <TextBlock Text="dms" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="6" Grid.Column="2"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding CoshCommand}">
+            <TextBlock Text="cosh" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="6" Grid.Column="4"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding CosCommand}">
+            <TextBlock Text="cos" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="6" Grid.Column="6"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding PowerCommand}">
+            <TextBlock Text="xʸ" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="6" Grid.Column="8"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding RootCommand}">
+            <TextBlock Text="ʸ√x" Style="{StaticResource OperationButtonText}" />
+        </Button>
+
+        <Button Grid.Row="8" Grid.Column="0"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding PiCommand}">
+            <TextBlock Text="π" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="8" Grid.Column="2"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding TanhCommand}">
+            <TextBlock Text="tanh" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="8" Grid.Column="4"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding TanCommand}">
+            <TextBlock Text="tan" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="8" Grid.Column="6"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding Pow3Command}">
+            <TextBlock Text="x³" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="8" Grid.Column="8"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding Root3Command}">
+            <TextBlock Text="³√x" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="10" Grid.Column="0"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding FECommand}">
+            <TextBlock Text="F-E" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="10" Grid.Column="2"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding ExpCommand}">
+            <TextBlock Text="Exp" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="10" Grid.Column="4"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding ModCommand}">
+            <TextBlock Text="Mod" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="10" Grid.Column="6"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding LogCommand}">
+            <TextBlock Text="Log" Style="{StaticResource OperationButtonText}" />
+        </Button>
+        <Button Grid.Row="10" Grid.Column="8"
+                Style="{StaticResource OperationButtonStyle}"
+                Command="{Binding LogCommand}">
+            <TextBlock Text="10ˣ" Style="{StaticResource OperationButtonText}" />
+        </Button>
+    </Grid>
+</UserControl>

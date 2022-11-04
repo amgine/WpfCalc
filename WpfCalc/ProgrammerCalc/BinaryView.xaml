@@ -1,0 +1,207 @@
+﻿<UserControl x:Class="WpfCalc.BinaryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:WpfCalc"
+
+             mc:Ignorable="d" Height="61">
+    <UserControl.Resources>
+        <local:BitToTextConverter x:Key="BitToTextConverter" />
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="Consolas" />
+        </Style>
+        <Style TargetType="{x:Type TextBlock}"
+               x:Key="BitMarkTextBlockStyle">
+            <Setter Property="FontFamily" Value="Consolas" />
+            <Setter Property="Foreground" Value="#FF666666" />
+        </Style>
+        <Style TargetType="{x:Type ToggleButton}">
+            <Setter Property="Focusable" Value="False" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <TextBlock Text="{TemplateBinding IsChecked,
+                                                          Converter={StaticResource BitToTextConverter}}"
+                                   FontFamily="Consolas"
+                                   Foreground="#FF1E395B" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="{x:Type Separator}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Width="{TemplateBinding Width}"
+                                   Height="{TemplateBinding Height}" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Border Grid.Row="2"
+            Style="{StaticResource OuterBorderStyle}"
+            BorderBrush="#FF8696AA">
+        <Border BorderBrush="White"
+                BorderThickness="1">
+            <Grid Width="365" Margin="0,2,0,4"
+                  HorizontalAlignment="Center">
+                <Grid.Resources>
+                    <GridLength x:Key="Spacing">19</GridLength>
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="{StaticResource Spacing}" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="{StaticResource Spacing}" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="{StaticResource Spacing}" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="{StaticResource Spacing}" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="{StaticResource Spacing}" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="{StaticResource Spacing}" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="{StaticResource Spacing}" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left"
+                           Text="63" Style="{StaticResource BitMarkTextBlockStyle}" />
+                <TextBlock Grid.Row="1" Grid.Column="8" HorizontalAlignment="Left"
+                           Text="47" Style="{StaticResource BitMarkTextBlockStyle}" />
+                <TextBlock Grid.Row="1" Grid.Column="14" HorizontalAlignment="Right"
+                           Text="32" Style="{StaticResource BitMarkTextBlockStyle}" />
+
+                <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left"
+                           Text="31" Style="{StaticResource BitMarkTextBlockStyle}" />
+                <TextBlock Grid.Row="3" Grid.Column="8" HorizontalAlignment="Left"
+                           Text="15" Style="{StaticResource BitMarkTextBlockStyle}" />
+                <TextBlock Grid.Row="3" Grid.Column="14" HorizontalAlignment="Right"
+                           Text="0" Style="{StaticResource BitMarkTextBlockStyle}" />
+
+                <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+                    <ToggleButton IsChecked="{Binding Bits[63]}" />
+                    <ToggleButton IsChecked="{Binding Bits[62]}" />
+                    <Separator Width="1" />
+                    <ToggleButton IsChecked="{Binding Bits[61]}" />
+                    <ToggleButton IsChecked="{Binding Bits[60]}" />
+                </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal">
+                    <ToggleButton IsChecked="{Binding Bits[59]}" />
+                    <ToggleButton IsChecked="{Binding Bits[58]}" />
+                    <Separator Width="1" />
+                    <ToggleButton IsChecked="{Binding Bits[57]}" />
+                    <ToggleButton IsChecked="{Binding Bits[56]}" />
+                </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="4" Orientation="Horizontal">
+                    <ToggleButton IsChecked="{Binding Bits[55]}" />
+                    <ToggleButton IsChecked="{Binding Bits[54]}" />
+                    <Separator Width="1" />
+                    <ToggleButton IsChecked="{Binding Bits[53]}" />
+                    <ToggleButton IsChecked="{Binding Bits[52]}" />
+                </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="6" Orientation="Horizontal">
+                    <ToggleButton IsChecked="{Binding Bits[51]}" />
+                    <ToggleButton IsChecked="{Binding Bits[50]}" />
+                    <Separator Width="1" />
+                    <ToggleButton IsChecked="{Binding Bits[49]}" />
+                    <ToggleButton IsChecked="{Binding Bits[48]}" />
+                </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="8" Orientation="Horizontal">
+                    <ToggleButton IsChecked="{Binding Bits[47]}" />
+                    <ToggleButton IsChecked="{Binding Bits[46]}" />
+                    <Separator Width="1" />
+                    <ToggleButton IsChecked="{Binding Bits[45]}" />
+                    <ToggleButton IsChecked="{Binding Bits[44]}" />
+                </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="10" Orientation="Horizontal">
+                    <ToggleButton IsChecked="{Binding Bits[43]}" />
+                    <ToggleButton IsChecked="{Binding Bits[42]}" />
+                    <Separator Width="1" />
+                    <ToggleButton IsChecked="{Binding Bits[41]}" />
+                    <ToggleButton IsChecked="{Binding Bits[40]}" />
+                </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="12" Orientation="Horizontal">
+                    <ToggleButton IsChecked="{Binding Bits[39]}" />
+                    <ToggleButton IsChecked="{Binding Bits[38]}" />
+                    <Separator Width="1" />
+                    <ToggleButton IsChecked="{Binding Bits[37]}" />
+                    <ToggleButton IsChecked="{Binding Bits[36]}" />
+                </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="14" Orientation="Horizontal">
+                    <ToggleButton IsChecked="{Binding Bits[35]}" />
+                    <ToggleButton IsChecked="{Binding Bits[34]}" />
+                    <Separator Width="1" />
+                    <ToggleButton IsChecked="{Binding Bits[33]}" />
+                    <ToggleButton IsChecked="{Binding Bits[32]}" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
+                    <ToggleButton IsChecked="{Binding Bits[31]}" />
+                    <ToggleButton IsChecked="{Binding Bits[30]}" />
+                    <Separator Width="1" />
+                    <ToggleButton IsChecked="{Binding Bits[29]}" />
+                    <ToggleButton IsChecked="{Binding Bits[28]}" />
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal">
+                    <ToggleButton IsChecked="{Binding Bits[27]}" />
+                    <ToggleButton IsChecked="{Binding Bits[26]}" />
+                    <Separator Width="1" />
+                    <ToggleButton IsChecked="{Binding Bits[25]}" />
+                    <ToggleButton IsChecked="{Binding Bits[24]}" />
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="4" Orientation="Horizontal">
+                    <ToggleButton IsChecked="{Binding Bits[23]}" />
+                    <ToggleButton IsChecked="{Binding Bits[22]}" />
+                    <Separator Width="1" />
+                    <ToggleButton IsChecked="{Binding Bits[21]}" />
+                    <ToggleButton IsChecked="{Binding Bits[20]}" />
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="6" Orientation="Horizontal">
+                    <ToggleButton IsChecked="{Binding Bits[19]}" />
+                    <ToggleButton IsChecked="{Binding Bits[18]}" />
+                    <Separator Width="1" />
+                    <ToggleButton IsChecked="{Binding Bits[17]}" />
+                    <ToggleButton IsChecked="{Binding Bits[16]}" />
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="8" Orientation="Horizontal">
+                    <ToggleButton IsChecked="{Binding Bits[15]}" />
+                    <ToggleButton IsChecked="{Binding Bits[14]}" />
+                    <Separator Width="1" />
+                    <ToggleButton IsChecked="{Binding Bits[13]}" />
+                    <ToggleButton IsChecked="{Binding Bits[12]}" />
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="10" Orientation="Horizontal">
+                    <ToggleButton IsChecked="{Binding Bits[11]}" />
+                    <ToggleButton IsChecked="{Binding Bits[10]}" />
+                    <Separator Width="1" />
+                    <ToggleButton IsChecked="{Binding Bits[9]}" />
+                    <ToggleButton IsChecked="{Binding Bits[8]}" />
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="12" Orientation="Horizontal">
+                    <ToggleButton IsChecked="{Binding Bits[7]}" />
+                    <ToggleButton IsChecked="{Binding Bits[6]}" />
+                    <Separator Width="1" />
+                    <ToggleButton IsChecked="{Binding Bits[5]}" />
+                    <ToggleButton IsChecked="{Binding Bits[4]}" />
+                </StackPanel>
+                <StackPanel Grid.Row="2" Grid.Column="14" Orientation="Horizontal">
+                    <ToggleButton IsChecked="{Binding Bits[3]}" />
+                    <ToggleButton IsChecked="{Binding Bits[2]}" />
+                    <Separator Width="1" />
+                    <ToggleButton IsChecked="{Binding Bits[1]}" />
+                    <ToggleButton IsChecked="{Binding Bits[0]}" />
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Border>
+</UserControl>
